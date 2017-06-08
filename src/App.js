@@ -3,18 +3,11 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
+import Form from './Form';
+
 import { setName } from './reducer';
 
 class App extends Component {
-  constructor(props) {
-    console.log(props)
-    super(props);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
   render() {
     return (
       <div className="App">
@@ -23,11 +16,10 @@ class App extends Component {
           <h2>Sandbox</h2>
         </div>
         <div>
-          <input
-            type="text"
-            value={this.props.name}
+          <Form
             onChange={(event) => {
-              this.props.setName(event.target.value);
+              console.log('set name fired', event)
+              this.props.setName(event.name);
             }}
           />
         </div>
@@ -44,8 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setName: () => {
-      dispatch(setName())
+    setName: (name) => {
+      dispatch(setName(name))
     }
   }
 }
