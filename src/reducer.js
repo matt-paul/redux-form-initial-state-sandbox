@@ -1,5 +1,10 @@
+const initialState = {
+  // data: {
+  //   name: 'Hello'
+  // }
+}
 
-export const myReducer = (state= {}, action) => {
+export const myReducer = (state= initialState, action) => {
   switch (action.type) {
     case 'SET_NAME':
       return Object.assign({}, state, {
@@ -7,14 +12,9 @@ export const myReducer = (state= {}, action) => {
           name: action.name
         }),
       })
-      case 'LOAD_NAME':
-        return {
-          data: action.data
-        }
     default:
       return state;
   }
 }
 
 export const setName = name => ({ type: 'SET_NAME', name})
-export const loadName = data => ({ type: 'LOAD_NAME', data})

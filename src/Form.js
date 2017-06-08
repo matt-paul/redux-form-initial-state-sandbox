@@ -1,8 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { loadName } from './reducer';
-
 
 let SimpleForm = props => {
   const { load, handleSubmit, pristine, reset, submitting } = props;
@@ -31,11 +29,11 @@ SimpleForm = reduxForm({
   }
 })(SimpleForm)
 
-SimpleForm = connect(
-  state => ({
-    initialValues: state.myReducer.data,
-  }),
-  {load: loadName} //probably something here
-)(SimpleForm)
+//If the initial state of 'myReducer was an exact match for our form, we could do it this wasy as opposed to the above'
+// SimpleForm = connect(
+//   state => ({
+//     initialValues: state.myReducer.data,
+//   }),
+// )(SimpleForm)
 
 export default SimpleForm;
